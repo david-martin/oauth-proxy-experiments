@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ups
+    mobile: enabled
+    service: ups-proxy
+  name: ups-proxy
+spec:
+  ports:
+  - name: web
+    port: 80
+    protocol: TCP
+    targetPort: 4180
+  selector:
+    app: ups
+    service: ups
+  sessionAffinity: None
+  type: ClusterIP
